@@ -1,0 +1,21 @@
+﻿@model WebAtividadeEntrevista.Models.ClienteModel
+
+@{
+    ViewBag.Title = "Alterar Cliente";
+}
+@section scripts{
+    <script>
+        var urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
+        var obj = @Html.Raw(Json.Encode(Model));
+        var urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
+        var urlGetBeneficiarios = '@Url.Action("ListarPorCliente", "Beneficiario", new { idCliente = Model.Id })';
+        var urlPostBeneficiarios = '@Url.Action("Incluir", "Beneficiario", new { idCliente = Model.Id })';
+        var urlDeletarPostBeneficiarios = '@Url.Action("Excluir", "Beneficiario", new {  })';
+        var urlAlterarPostBeneficiarios = '@Url.Action("Alterar", "Beneficiario", new {  })';
+        var urlValidarCPFPostBeneficiarios = '@Url.Action("ValidarCPF", "Beneficiario", new {  })';
+    </script>
+    @Scripts.Render("~/bundles/altClientes")
+}
+<h2>@Html.Raw(ViewBag.Title)</h2>
+@Html.Partial("Forms")
+@Html.Partial("BeneficiarioModal")
